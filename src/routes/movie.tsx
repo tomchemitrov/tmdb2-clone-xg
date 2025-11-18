@@ -1,4 +1,5 @@
 import { useMovieDetails } from '@/api/useMovieDetails';
+import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { IMAGE_HEADER_URL } from '@/constants/constants';
 import type { Movie } from '@/types/movieType';
@@ -11,7 +12,7 @@ export const Route = createFileRoute('/movie')({
 function MovieComponent() {
   const { id } = Route.useSearch() as { id: number };
 
-  const { data: movieData } = useMovieDetails(id);
+  const { data: movieData, isFetching } = useMovieDetails(id);
   const movie: Movie = movieData?.data;
 
   if (!movie) return null;
@@ -23,7 +24,7 @@ function MovieComponent() {
       <Header />
       <div className='flex p-4'>
         <img src={IMAGE_HEADER_URL + movie.poster_path}
-          className="rounded-t-lg w-[250px] h-[400px]"
+          className="rounded-lg w-[250px] h-[400px]"
         />
         <div className='px-12'>
           <h1>{movie.title + " (" + date.getFullYear() + ")"} </h1>
@@ -34,6 +35,7 @@ function MovieComponent() {
           <p className='text-blue-900'>{movie.overview}</p>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header'
 import { createFileRoute } from '@tanstack/react-router'
 
@@ -12,6 +13,8 @@ function RouteComponent() {
         <div>
             <Header />
             <h1>{id}</h1>
+
+            <Footer />
 
         </div>
     )

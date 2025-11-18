@@ -26,11 +26,18 @@ function App() {
 
   const navigate = useNavigate();
 
-  function handleClick(id: number) {
-    navigate({
-      to: "/movie",
-      search: { id }
-    });
+  function handleClick(id: number, mediaType: "movie" | "tv") {
+    if (mediaType === "tv") {
+      navigate({
+        to: "/tv",
+        search: { id }
+      });
+    } else {
+      navigate({
+        to: "/movie",
+        search: { id }
+      });
+    }
   }
 
   return (
@@ -82,7 +89,7 @@ function App() {
             <MovieItem
               key={movie.id}
               movie={movie}
-              onClick={handleClick}
+              onClick={() => handleClick(movie.id, movie.media_type)}
             />
           )
         }
@@ -93,7 +100,7 @@ function App() {
             <MovieItem
               key={movie.id}
               movie={movie}
-              onClick={handleClick}
+              onClick={() => handleClick(movie.id, movie.media_type)}
             />
           )
         }
@@ -106,7 +113,7 @@ function App() {
             <MovieItem
               key={movie.id}
               movie={movie}
-              onClick={handleClick}
+              onClick={() => handleClick(movie.id, movie.media_type)}
             />
           )
         }

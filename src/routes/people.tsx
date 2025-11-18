@@ -1,4 +1,5 @@
 import { usePeople } from '@/api/usePeople'
+import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header'
 import { PersonItem } from '@/components/PersonItem';
 import type { Person } from '@/types/personType';
@@ -31,5 +32,7 @@ function PeopleComponent() {
           ))
         }
       </div>
-    </div>)
+      <Footer />
+    </div>
+  )
 }

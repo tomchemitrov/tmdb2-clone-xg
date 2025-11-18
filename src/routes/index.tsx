@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import '../App.css'
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
@@ -23,22 +23,6 @@ function App() {
   const { data: nowPlaying } = useNowPlaying();
   const { data: trending } = useTrending();
   const { data: trendingWeek } = useTrendingWeek();
-
-  const navigate = useNavigate();
-
-  function handleClick(id: number, mediaType: "movie" | "tv") {
-    if (mediaType === "tv") {
-      navigate({
-        to: "/tv",
-        search: { id }
-      });
-    } else {
-      navigate({
-        to: "/movie",
-        search: { id }
-      });
-    }
-  }
 
   return (
     <div>
@@ -89,7 +73,6 @@ function App() {
             <MovieItem
               key={movie.id}
               movie={movie}
-              onClick={() => handleClick(movie.id, movie.media_type)}
             />
           )
         }
@@ -100,7 +83,6 @@ function App() {
             <MovieItem
               key={movie.id}
               movie={movie}
-              onClick={() => handleClick(movie.id, movie.media_type)}
             />
           )
         }
@@ -113,12 +95,10 @@ function App() {
             <MovieItem
               key={movie.id}
               movie={movie}
-              onClick={() => handleClick(movie.id, movie.media_type)}
             />
           )
         }
       </div>
-
       <Footer />
     </div>
   )

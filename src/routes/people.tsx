@@ -11,8 +11,7 @@ export const Route = createFileRoute("/people")({
 
 function PeopleComponent() {
   const people = usePeople();
-  console.log(people.data?.data.results);
-
+  
   return (
     <div>
       <Header />

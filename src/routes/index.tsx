@@ -22,9 +22,11 @@ function App() {
     "today",
   );
 
-  const { data: nowPlaying } = useNowPlaying();
   const { data: trending } = useTrending();
   const { data: trendingWeek } = useTrendingWeek();
+  const { data: nowPlaying } = useNowPlaying();
+
+  console.log(nowPlaying?.data.results);
 
   return (
     <div>
@@ -79,14 +81,6 @@ function App() {
         {trendingWeek &&
           trendingPeriod === "this_week" &&
           trendingWeek.data.results.map((movie: Movie) => (
-            <MovieItem key={movie.id} movie={movie} />
-          ))}
-      </div>
-
-      <h1 className="px-12 py-6 text-start font-bold">Now playing</h1>
-      <div className="flex px-12 overflow-x-auto">
-        {nowPlaying &&
-          nowPlaying.data.results.map((movie: Movie) => (
             <MovieItem key={movie.id} movie={movie} />
           ))}
       </div>

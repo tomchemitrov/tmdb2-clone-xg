@@ -26,9 +26,6 @@ function MovieComponent() {
   const director = credits.data?.data.crew.find(item => item.job === "Director") || "N/A";
   const producer = credits.data?.data.crew.find(item => item.job === "Producer") || "N/A";
 
-  console.log(director, producer);
-
-
   return (
     <div>
       <Header />

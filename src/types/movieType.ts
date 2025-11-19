@@ -47,4 +47,5 @@ export interface TvSeries {
   in_production: boolean;
   number_of_episodes: number;
   number_of_seasons: number;
+  media_type: "movie" | "tv";
 }

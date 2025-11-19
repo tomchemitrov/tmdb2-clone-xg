@@ -1,9 +1,9 @@
 import { IMAGE_HEADER_URL } from "@/constants/constants";
-import type { Movie, TvSeries } from "@/types/movieType";
+import type { Movie } from "@/types/movieType";
 import { Link } from "@tanstack/react-router";
 
 interface NowPlayingProps {
-  movie: Movie | TvSeries;
+  movie: Movie;
 }
 
 export const MovieItem = ({ movie }: NowPlayingProps) => {

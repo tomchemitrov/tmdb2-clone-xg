@@ -23,8 +23,8 @@ function MovieComponent() {
 
   const date = new Date(movie.release_date);
 
-  const director = credits.data?.data.crew.find(item => item.job === "Director") || "N/A";
-  const producer = credits.data?.data.crew.find(item => item.job === "Producer") || "N/A";
+  const director = credits.data?.data.crew.find((item: { job: string; }) => item.job === "Director") || "N/A";
+  const producer = credits.data?.data.crew.find((item: { job: string; }) => item.job === "Producer") || "N/A";
 
   return (
     <div>

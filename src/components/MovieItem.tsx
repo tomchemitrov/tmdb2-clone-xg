@@ -17,7 +17,6 @@ export const MovieItem = ({ movie }: NowPlayingProps) => {
                 <p className="font-bold">{movie.title ? movie.title : movie.name}</p>
                 <span className="text-gray-400 text-sm">{movie.release_date ? movie.release_date : movie.first_air_date}</span>
             </div>
-            <div>Test</div>
         </Link>
     )
 }

@@ -23,6 +23,12 @@ function MovieComponent() {
 
   const date = new Date(movie.release_date);
 
+  const director = credits.data?.data.crew.find(item => item.job === "Director") || "N/A";
+  const producer = credits.data?.data.crew.find(item => item.job === "Producer") || "N/A";
+
+  console.log(director, producer);
+
+
   return (
     <div>
       <Header />
@@ -38,7 +44,7 @@ function MovieComponent() {
           src={IMAGE_HEADER_URL + movie.poster_path}
           className="rounded-lg w-[250px] h-[400px]"
         />
-        <div className="px-12">
+        <div className="px-12 pt-4">
           <h1 className="font-bold text-xl">
             {movie.title + " (" + date.getFullYear() + ")"}{" "}
           </h1>
@@ -47,10 +53,25 @@ function MovieComponent() {
           <h6 className="mt-12">{movie.tagline}</h6>
           <h6 className="mt-2">Overview</h6>
           <p className="text-blue-900">{movie.overview}</p>
+
+          {director && producer && <div className="flex flex-row gap-32">
+            <div className="mt-12">
+              <h2 className="font-bold">Director</h2>
+              <h2>{director.name}</h2>
+            </div>
+
+            <div className="mt-12">
+              <h2 className="font-bold">Producer</h2>
+              <h2>{producer.name}</h2>
+            </div>
+          </div>
+          }
         </div>
       </div>
 
-      <div className="flex px-12 overflow-x-auto">
+      <h1 className="px-6 py-2 font-bold">Top billed cast</h1>
+      <div className="flex px-4 overflow-x-auto">
+
         {credits.data?.data &&
           credits.data?.data.cast.map((cast: Person) => (
             <PersonItem person={cast} />

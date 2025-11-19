@@ -17,7 +17,7 @@ function PeopleComponent() {
     <div>
       <Header />
       <h1 className="p-8">Popular people</h1>
-      <div className="p-2 gap-4 grid grid-cols-4">
+      <div className="p-2 gap-4 grid grid-cols-5">
         {people.data?.data.results.map((person: Person) => (
           <PersonItem key={person.id} person={person} />
         ))}

@@ -26,7 +26,7 @@ export interface Movie {
 export interface TvSeries {
   adult: boolean;
   backdrop_path: string;
-  created_by: Person;
+  created_by: Person[];
   genre_ids: number[];
   id: number;
   original_language: string;

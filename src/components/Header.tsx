@@ -1,18 +1,26 @@
 import { Link } from "@tanstack/react-router";
 
 export const Header = () => {
-    return (
-        <div className="bg-blue-900 p-4 flex flex-row gap-6">
-            <Link to={"/"}>
-                <img
-                    className="h-[20px]"
-                    src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
-                />
-            </Link>
-            <a onMouseEnter={() => { }} className="text-white">Movies</a>
-            <a onMouseEnter={() => console.log("Enter TV")} className="text-white">TV Shows</a>
-            <Link to={"/people"} className="text-white" >People</Link>
-            <a onMouseEnter={() => console.log("Enter More")} className="text-white">More</a>
-        </div>
-    )
-}
+  return (
+    <div className="bg-blue-900 p-4 flex flex-row gap-6">
+      <Link to={"/"}>
+        <img
+          className="h-[20px]"
+          src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+        />
+      </Link>
+      <a onMouseEnter={() => {}} className="text-white">
+        Movies
+      </a>
+      <a onMouseEnter={() => console.log("Enter TV")} className="text-white">
+        TV Shows
+      </a>
+      <Link to={"/people"} className="text-white">
+        People
+      </Link>
+      <a onMouseEnter={() => console.log("Enter More")} className="text-white">
+        More
+      </a>
+    </div>
+  );
+};

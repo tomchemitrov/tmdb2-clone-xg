@@ -48,7 +48,7 @@ function TVComponent() {
           <h6 className="mt-2">Overview</h6>
           <p className="text-blue-900">{tv.overview}</p>
 
-          <h6 className="mt-6">Created by</h6>
+          {tv.created_by.length > 0 && <h6 className="mt-6">Created by</h6>}
           <p>{tv.created_by.map((creator) => creator.name).join(", ")}</p>
         </div>
       </div>

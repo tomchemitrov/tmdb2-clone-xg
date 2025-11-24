@@ -9,4 +9,7 @@ export interface Person {
   known_for_department: string;
   popularity: number;
   known_for: Movie[];
+  biography: string;
+  birthday: string;
+  deathday: string | null;
 }

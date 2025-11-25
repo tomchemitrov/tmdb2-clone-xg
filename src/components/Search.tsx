@@ -1,10 +1,12 @@
 import { SearchIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 
-interface SearchProps {}
+interface SearchProps { }
 
-export const Search = ({}: SearchProps) => {
+export const Search = ({ }: SearchProps) => {
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   return (
@@ -13,9 +15,12 @@ export const Search = ({}: SearchProps) => {
       <input
         className="flex-grow px-4 py-2 focus:outline-none"
         placeholder="Search for movies, TV Shows, people"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
       <Button
-        onClick={() => navigate({ to: "/search" })}
+        onClick={() => navigate(
+          { to: "/search", search: { searchQuery: query } })}
         className="self-center"
       >
         Search

@@ -28,7 +28,7 @@ function RouteComponent() {
       <div className="flex p-4">
         <img
           src={IMAGE_HEADER_URL + person.profile_path}
-          className="rounded-lg w-[300px]"
+          className="rounded-lg w-[300px] h-[450px]"
         />
         <div className="px-4">
           <h1 className="font-bold text-xl">{person.name}</h1>

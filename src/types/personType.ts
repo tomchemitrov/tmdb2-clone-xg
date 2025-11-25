@@ -12,4 +12,5 @@ export interface Person {
   biography: string;
   birthday: string;
   deathday: string | null;
+  media_type: string;
 }

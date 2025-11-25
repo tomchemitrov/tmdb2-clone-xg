@@ -25,7 +25,7 @@ export const Search = ({ }: SearchProps) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={(e) => {
-          if (e.key === "Enter") {
+          if (e.key === "Enter" && query.trim() !== "") {
             handleNavigate();
           }
         }}

@@ -34,8 +34,7 @@ function SearchComponent() {
           className="flex-grow px-4 py-2 focus:outline-none"
           placeholder="Search for movies, TV Shows, people"
           value={query}
-          onChange={(e) => setQuery(e.target.value)
-          }
+          onChange={(e) => setQuery(e.target.value)}
         />
       </div>
 
@@ -46,19 +45,19 @@ function SearchComponent() {
           selectedCategory === "movies"
             ? "bg-blue-900 text-white"
             : ""
-        } variant="outline" onClick={() => setSelectedCategory("movies")}>Movies</Button>
+        } variant="outline" onClick={() => setSelectedCategory("movies")}>Movies  ({movies?.length})</Button>
         <Button className={
           selectedCategory === "tv"
             ? "bg-blue-900 text-white"
             : ""
-        } variant="outline" onClick={() => setSelectedCategory("tv")}>TV Shows</Button>
+        } variant="outline" onClick={() => setSelectedCategory("tv")}>TV Shows  ({tvs?.length})</Button>
         <Button
           className={
             selectedCategory === "people"
               ? "bg-blue-900 text-white"
               : ""
           }
-          variant="outline" onClick={() => setSelectedCategory("people")}>People</Button>
+          variant="outline" onClick={() => setSelectedCategory("people")}>People  ({people?.length})</Button>
       </div>
       <div className="p-8">
         <h1>Search results: </h1>

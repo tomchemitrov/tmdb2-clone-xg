@@ -15,7 +15,7 @@ function PeopleComponent() {
   return (
     <div>
       <Header />
-      <h1 className="p-8">Popular people</h1>
+      <h1 className="px-8 py-4 font-bold text-lg">Popular people</h1>
       <div className="p-2 gap-4 grid grid-cols-5">
         {people.data?.data.results.map((person: Person) => (
           <PersonItem key={person.id} person={person} />

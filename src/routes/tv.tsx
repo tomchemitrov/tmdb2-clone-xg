@@ -7,6 +7,7 @@ import { IMAGE_HEADER_URL } from "@/constants/constants";
 import type { TvSeries } from "@/types/movieType";
 import type { Person } from "@/types/personType";
 import { createFileRoute } from "@tanstack/react-router";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 
 export const Route = createFileRoute("/tv")({
   component: TVComponent,
@@ -44,7 +45,19 @@ function TVComponent() {
           </h1>
           <h6>{tv.genres.map((genre) => genre.name).join(", ")}</h6>
 
-          <h6 className="mt-12">{tv.tagline}</h6>
+          <CircularProgressbar
+            value={tv.vote_average * 10}
+            text={tv.vote_average.toString()}
+            styles={buildStyles({
+              textSize: "34px",
+              pathColor: tv.vote_average * 10 > 70 ? "green" : tv.vote_average * 10 > 40 ? "yellow" : "red",
+              textColor: "#000",
+              trailColor: "#333",
+            })}
+            className="my-4 w-[75px]"
+          />
+
+          <h6>{tv.tagline}</h6>
           <h6 className="mt-2">Overview</h6>
           <p className="text-blue-900">{tv.overview}</p>
 

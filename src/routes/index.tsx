@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Welcome } from "@/components/Welcome";
 import type { Movie } from "@/types/movieType";
-import { useNowPlaying } from "@/api/useNowPlaying";
 import { useTrending } from "@/api/useTrending";
 import { MovieItem } from "@/components/MovieItem";
 import { Search } from "@/components/Search";
@@ -24,9 +23,6 @@ function App() {
 
   const { data: trending } = useTrending();
   const { data: trendingWeek } = useTrendingWeek();
-  const { data: nowPlaying } = useNowPlaying();
-
-  console.log(nowPlaying?.data.results);
 
   return (
     <div>

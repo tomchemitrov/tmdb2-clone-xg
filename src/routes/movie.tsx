@@ -7,6 +7,7 @@ import { IMAGE_HEADER_URL } from "@/constants/constants";
 import type { Movie } from "@/types/movieType";
 import type { Person } from "@/types/personType";
 import { createFileRoute } from "@tanstack/react-router";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 export const Route = createFileRoute("/movie")({
   component: MovieComponent,
@@ -47,6 +48,18 @@ function MovieComponent() {
           </h1>
           <h6>{movie.genres.map((genre) => genre.name).join(", ")}</h6>
 
+          <div className="my-4 w-[75px] h-[75px]">
+            <CircularProgressbar
+              value={movie.vote_average * 10}
+              text={movie.vote_average.toString()}
+              styles={buildStyles({
+                textSize: "34px",
+                pathColor: movie.vote_average * 10 > 70 ? "green" : movie.vote_average * 10 > 40 ? "yellow" : "red",
+                textColor: "#000",
+                trailColor: "#333",
+              })}
+            />
+          </div>
           <h6 className="mt-12">{movie.tagline}</h6>
           <h6 className="mt-2">Overview</h6>
           <p className="text-blue-900">{movie.overview}</p>

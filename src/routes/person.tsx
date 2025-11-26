@@ -1,7 +1,10 @@
+import { usePersonCredits } from "@/api/usePersonCredits";
 import { usePerson } from "@/api/usePersonDetails";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { MovieItem } from "@/components/MovieItem";
 import { IMAGE_HEADER_URL } from "@/constants/constants";
+import type { Movie } from "@/types/movieType";
 import type { Person } from "@/types/personType";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -13,9 +16,11 @@ function RouteComponent() {
   const { id } = Route.useSearch() as { id: number };
 
   const { data, isFetching } = usePerson(id);
+  const { data: creditsData } = usePersonCredits(id);
   const person: Person = data?.data;
+  const credits: Movie[] = creditsData?.data.cast;
 
-  if (!person) return null;
+  if (!person) return;
 
   return (
     <div>
@@ -40,6 +45,15 @@ function RouteComponent() {
           }
         </div>
       </div>
+
+      <h1 className="px-6 py-2 font-bold">Known for</h1>
+      {credits &&
+        <div className="flex px-4 overflow-x-auto">
+          {
+            credits.map((movie: Movie) => <MovieItem movie={movie} />)
+          }
+        </div>
+      }
 
       <Footer />
     </div>

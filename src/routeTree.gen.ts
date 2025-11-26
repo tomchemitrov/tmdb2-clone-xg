@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TvsRouteImport } from './routes/tvs'
 import { Route as TvRouteImport } from './routes/tv'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as PersonRouteImport } from './routes/person'
@@ -17,6 +18,11 @@ import { Route as MoviesRouteImport } from './routes/movies'
 import { Route as MovieRouteImport } from './routes/movie'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TvsRoute = TvsRouteImport.update({
+  id: '/tvs',
+  path: '/tvs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TvRoute = TvRouteImport.update({
   id: '/tv',
   path: '/tv',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/person': typeof PersonRoute
   '/search': typeof SearchRoute
   '/tv': typeof TvRoute
+  '/tvs': typeof TvsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/person': typeof PersonRoute
   '/search': typeof SearchRoute
   '/tv': typeof TvRoute
+  '/tvs': typeof TvsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/person': typeof PersonRoute
   '/search': typeof SearchRoute
   '/tv': typeof TvRoute
+  '/tvs': typeof TvsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,8 +100,17 @@ export interface FileRouteTypes {
     | '/person'
     | '/search'
     | '/tv'
+    | '/tvs'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/movie' | '/movies' | '/people' | '/person' | '/search' | '/tv'
+  to:
+    | '/'
+    | '/movie'
+    | '/movies'
+    | '/people'
+    | '/person'
+    | '/search'
+    | '/tv'
+    | '/tvs'
   id:
     | '__root__'
     | '/'
@@ -102,6 +120,7 @@ export interface FileRouteTypes {
     | '/person'
     | '/search'
     | '/tv'
+    | '/tvs'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -112,10 +131,18 @@ export interface RootRouteChildren {
   PersonRoute: typeof PersonRoute
   SearchRoute: typeof SearchRoute
   TvRoute: typeof TvRoute
+  TvsRoute: typeof TvsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tvs': {
+      id: '/tvs'
+      path: '/tvs'
+      fullPath: '/tvs'
+      preLoaderRoute: typeof TvsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tv': {
       id: '/tv'
       path: '/tv'
@@ -176,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   PersonRoute: PersonRoute,
   SearchRoute: SearchRoute,
   TvRoute: TvRoute,
+  TvsRoute: TvsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

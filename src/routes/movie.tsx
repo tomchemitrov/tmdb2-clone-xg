@@ -68,7 +68,6 @@ function MovieComponent() {
 
       <h1 className="px-6 py-2 font-bold">Top billed cast</h1>
       <div className="flex px-4 overflow-x-auto">
-
         {credits.data?.data &&
           credits.data?.data.cast.map((cast: Person) => (
             <PersonItem person={cast} />

@@ -10,6 +10,7 @@ export const Search = ({ }: SearchProps) => {
   const navigate = useNavigate();
 
   function handleNavigate() {
+    if(query.trim() === "") return;
     navigate({
       to: "/search",
       search: { searchQuery: query }

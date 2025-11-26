@@ -9,6 +9,7 @@ export type UseAPIQeryProps = {
   headers?: Record<string, string>;
   queryKey?: any;
   enabled?: boolean;
+  params?: any
 };
 
 const http = axios.create({
@@ -22,6 +23,7 @@ export function useAPIQuery({
   headers,
   queryKey,
   enabled,
+  params
 }: UseAPIQeryProps) {
   return useQuery({
     queryKey: queryKey,
@@ -31,6 +33,7 @@ export function useAPIQuery({
         url,
         data: body,
         headers,
+        params
       }),
     enabled,
   });

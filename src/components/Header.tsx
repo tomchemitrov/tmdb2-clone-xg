@@ -9,18 +9,18 @@ export const Header = () => {
           src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
         />
       </Link>
-      <a onMouseEnter={() => {}} className="text-white">
+      <Link to={"/movies"} className="text-white">
         Movies
-      </a>
-      <a onMouseEnter={() => console.log("Enter TV")} className="text-white">
+      </Link>
+      <Link to={"/tvs"} className="text-white">
         TV Shows
-      </a>
+      </Link>
       <Link to={"/people"} className="text-white">
         People
       </Link>
-      <a onMouseEnter={() => console.log("Enter More")} className="text-white">
+      <Link to={"/"} className="text-white">
         More
-      </a>
+      </Link>
     </div>
   );
 };

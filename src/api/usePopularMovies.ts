@@ -1,11 +1,11 @@
 import { API_KEY } from "@/constants/constants";
 import { useAPIQuery, type UseAPIQeryProps } from "@/api/useApiQuery";
 
-export function usePeople(page: number) {
+export function usePopularMovies(page: number) {
   const params: UseAPIQeryProps = {
-    url: "person/popular?page=" + page,
+    url: "movie/popular?page=" + page,
     method: "get",
-    queryKey: ["person/popular", page],
+    queryKey: ["movie/popular", page],
     enabled: true,
     headers: {
       Accept: "application/json",
